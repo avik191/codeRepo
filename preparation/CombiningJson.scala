@@ -4,6 +4,21 @@ import com.google.gson.{Gson, JsonArray, JsonObject, JsonParser}
 import org.example.JsonConversion.{parsingDataAsPerRecord, recordConfig}
 
 object CombiningJson {
+  
+  /*
+  val DSencoder = Encoders.product[Logs]
+val DFencoder: ExpressionEncoder[Row] = RowEncoder.apply(ds.schema.add("col1",StringType,false))
+
+val mpCheck = ds.mapPartitions(rows =>{
+                          rows.map(logs => {
+                            val id = logs.userId
+                            val ip = logs.ip
+                            val x = id+" : "+ip
+                           Row.fromSeq(logs.toSeq() :+ x)
+                          //  Logs2(logs.timestamp, logs.userId, logs.ip ,logs.page, logs.reference, logs.os, logs.os_version, logs.agent, x)
+                          })
+                })(DFencoder)
+  */
 
   def parsingDataAsPerRecord(recordText: String, fileType : String, recordType: String,
                              recordConfiguration: Map[(String,String), Map[String, (Int, Int)]]): JsonObject = {
